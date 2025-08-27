@@ -89,7 +89,7 @@ function handle_contact_form_submission() {
 add_action('wp_ajax_handle_contact_form', 'handle_contact_form_submission');
 add_action('wp_ajax_nopriv_handle_contact_form', 'handle_contact_form_submission');
 
-// Handle payment processing (placeholder for integration with MTN/Airtel APIs)
+// Handle MTN Mobile Money payment processing
 function handle_payment_processing() {
     // Verify nonce
     if (!wp_verify_nonce($_POST['nonce'], 'ntenjeru_nonce')) {
@@ -107,16 +107,54 @@ function handle_payment_processing() {
         wp_send_json_error('Missing payment information.');
     }
     
-    // TODO: Integrate with MTN/Airtel Mobile Money APIs
-    // This is where you would implement the actual payment processing logic
-    
-    // For now, return a placeholder response
-    wp_send_json_success(array(
-        'message' => "Payment initiated for $plan ($amount UGX) via $provider. Integration with payment APIs required.",
-        'plan' => $plan,
-        'amount' => $amount,
-        'provider' => $provider
-    ));
+    // Handle MTN Mobile Money payments
+    if ($provider === 'MTN') {
+        // Prepare data for MTN API
+        $payment_data = array(
+            'phone' => $phone_number,
+            'amount' => $amount,
+            'plan' => $plan
+        );
+        
+        // Call MTN payment API
+        $response = wp_remote_post(get_template_directory_uri() . '/momo_request.php', array(
+            'body' => $payment_data,
+            'timeout' => 45,
+            'headers' => array(
+                'Content-Type' => 'application/x-www-form-urlencoded'
+            )
+        ));
+        
+        if (is_wp_error($response)) {
+            wp_send_json_error('Payment service temporarily unavailable. Please try again.');
+        }
+        
+        $body = wp_remote_retrieve_body($response);
+        $data = json_decode($body, true);
+        
+        if (isset($data['success']) && $data['success']) {
+            // Log successful payment attempt
+            error_log("MTN Payment initiated: Phone: $phone_number, Amount: $amount, Plan: $plan, Reference: " . $data['reference_id']);
+            
+            wp_send_json_success(array(
+                'message' => 'Payment request sent! Please check your phone for the MTN Mobile Money prompt.',
+                'reference_id' => $data['reference_id'],
+                'plan' => $plan,
+                'amount' => $amount,
+                'provider' => $provider
+            ));
+        } else {
+            $error_message = isset($data['error']) ? $data['error'] : 'Payment failed. Please try again.';
+            wp_send_json_error($error_message);
+        }
+    } 
+    // Handle Airtel Money payments (placeholder for future implementation)
+    else if ($provider === 'Airtel') {
+        wp_send_json_error('Airtel Money integration coming soon! Please use MTN Mobile Money or contact us at +256 763 643724.');
+    } 
+    else {
+        wp_send_json_error('Unsupported payment provider.');
+    }
 }
 add_action('wp_ajax_handle_payment', 'handle_payment_processing');
 add_action('wp_ajax_nopriv_handle_payment', 'handle_payment_processing');
