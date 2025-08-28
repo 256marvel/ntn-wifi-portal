@@ -1,9 +1,16 @@
 /*
-Theme Name: NTENJERU WIFI
-Description: A modern WordPress theme for internet service providers. Features responsive design, pricing tables with mobile money payment integration, and optimized for WiFi hotspot redirection.
-Version: 1.0
-Author: NTENJERU WIFI
+Theme Name: NTENJERU WIFI Pro
+Description: Professional WiFi service website theme with integrated mobile money payments, floating tech animations, and comprehensive customization options. Built for modern ISP businesses.
+Version: 2.0.0
+Author: Marvel UG
+Author URI: https://marvelug.com
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: ntenjeru-wifi
+Tags: business, internet, wifi, payments, modern, responsive, tech
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
@@ -965,7 +972,139 @@ html {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.interactive-hover:hover {
-  transform: translateY(-4px) scale(1.02);
-  filter: brightness(1.1);
+/* Enhanced floating tech graphics background */
+.floating-graphics {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.tech-shape {
+    position: absolute;
+    opacity: 0.1;
+    animation: float 20s infinite ease-in-out;
+}
+
+.tech-shape:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4);
+    border-radius: 50%;
+    animation-delay: 0s;
+}
+
+.tech-shape:nth-child(2) {
+    top: 20%;
+    right: 15%;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #06b6d4, #10b981);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    animation-delay: -5s;
+}
+
+.tech-shape:nth-child(3) {
+    bottom: 20%;
+    left: 20%;
+    width: 100px;
+    height: 40px;
+    background: linear-gradient(90deg, #8b5cf6, #ec4899);
+    border-radius: 20px;
+    animation-delay: -10s;
+}
+
+.tech-shape:nth-child(4) {
+    top: 60%;
+    right: 20%;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(225deg, #10b981, #f59e0b);
+    transform: rotate(45deg);
+    animation-delay: -15s;
+}
+
+.tech-shape:nth-child(5) {
+    bottom: 30%;
+    right: 40%;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(180deg, #ec4899, #8b5cf6);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    animation-delay: -8s;
+}
+
+.tech-shape:nth-child(6) {
+    top: 40%;
+    left: 5%;
+    width: 90px;
+    height: 30px;
+    background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+    border-radius: 15px;
+    animation-delay: -12s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.1;
+    }
+    25% {
+        transform: translateY(-20px) rotate(90deg);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-40px) rotate(180deg);
+        opacity: 0.15;
+    }
+    75% {
+        transform: translateY(-20px) rotate(270deg);
+        opacity: 0.25;
+    }
+}
+
+/* Scroll-triggered animations */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced rainbow text effect */
+.rainbow-text {
+    background: linear-gradient(
+        45deg,
+        #ff6b6b,
+        #4ecdc4,
+        #45b7d1,
+        #96ceb4,
+        #feca57,
+        #ff9ff3,
+        #54a0ff
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow 3s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }

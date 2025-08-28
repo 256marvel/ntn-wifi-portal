@@ -1,16 +1,22 @@
-<?php get_header(); ?>
-
-<main>
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/hero-bg.jpg" alt="High-speed internet connectivity" class="hero-bg">
-        <div class="hero-overlay"></div>
+    <!-- Enhanced Floating Graphics Background -->
+    <?php if (get_option('enable_floating_graphics', '1') === '1'): ?>
+    <div class="floating-graphics">
+        <div class="tech-shape"></div>
+        <div class="tech-shape"></div>
+        <div class="tech-shape"></div>
+        <div class="tech-shape"></div>
+        <div class="tech-shape"></div>
+        <div class="tech-shape"></div>
+    </div>
+    <?php endif; ?>
         
-        <div class="hero-content">
-            <div class="container">
-                <h1>Stay Connected with <span style="background: linear-gradient(to right, #ffffff, #bfdbfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NTENJERU WIFI</span></h1>
-                
-                <p>Reliable Internet Anytime, Anywhere in Mukono. Fast, affordable, and always available connectivity for work, study, and entertainment.</p>
+        <div class="text-center z-10 scroll-animate">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 rainbow-text">
+                <?php echo get_option('hero_title', 'Stay Connected with Lightning-Fast WiFi ⚡'); ?>
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+                <?php echo get_option('hero_subtitle', 'Experience blazing-fast internet speeds with our reliable WiFi packages. Perfect for streaming, gaming, and working from home.'); ?>
+            </p>
                 
                 <div class="hero-features">
                     <div class="feature-badge">

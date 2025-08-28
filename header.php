@@ -23,54 +23,13 @@
 </head>
 <body <?php body_class(); ?>>
 
-<header class="header">
-    <div class="container">
-        <div class="header-content">
-            <!-- Logo -->
-            <div class="logo">
-                <div class="logo-icon">
-                    <span style="color: white; font-size: 24px;">📶</span>
+    <nav class="bg-white/10 backdrop-blur-md border-b border-white/20 relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center items-center h-20">
+                <div class="text-center">
+                    <h1 class="text-2xl md:text-3xl font-bold text-white rainbow-text"><?php echo get_option('site_title', 'NTENJERU WIFI'); ?></h1>
+                    <p class="text-white/80 text-sm mt-1"><?php echo get_option('site_tagline', 'Fast & Reliable Internet'); ?></p>
                 </div>
-                <div>
-                    <h1>NTENJERU WIFI</h1>
-                    <p>Stay Connected</p>
-                </div>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav class="nav" id="mainNav">
-                <a href="#home" onclick="scrollToSection('home')">Home</a>
-                <a href="#packages" onclick="scrollToSection('packages')">Packages</a>
-                <a href="#about" onclick="scrollToSection('about')">About</a>
-                <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
-            </nav>
-
-            <!-- Contact Info & Mobile Menu -->
-            <div style="display: flex; align-items: center; gap: 16px;">
-                <div style="display: none; align-items: center; gap: 8px; font-size: 14px;" class="contact-info">
-                    <span style="color: var(--primary);">📞</span>
-                    <span style="font-weight: 500;">+256 763 643724</span>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
-                    <span id="menuIcon">☰</span>
-                </button>
             </div>
         </div>
-
-        <!-- Mobile Navigation -->
-        <nav class="mobile-nav" id="mobileNav" style="display: none; padding: 24px 0; border-top: 1px solid var(--border);">
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-                <a href="#home" onclick="scrollToSection('home'); toggleMobileMenu();" style="text-decoration: none; color: var(--foreground); font-weight: 500;">Home</a>
-                <a href="#packages" onclick="scrollToSection('packages'); toggleMobileMenu();" style="text-decoration: none; color: var(--foreground); font-weight: 500;">Packages</a>
-                <a href="#about" onclick="scrollToSection('about'); toggleMobileMenu();" style="text-decoration: none; color: var(--foreground); font-weight: 500;">About</a>
-                <a href="#contact" onclick="scrollToSection('contact'); toggleMobileMenu();" style="text-decoration: none; color: var(--foreground); font-weight: 500;">Contact</a>
-                <div style="display: flex; align-items: center; gap: 8px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 14px;">
-                    <span style="color: var(--primary);">📞</span>
-                    <span style="font-weight: 500;">+256 763 643724</span>
-                </div>
-            </div>
-        </nav>
-    </div>
-</header>
+    </nav>
