@@ -3,18 +3,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Check, Clock, Calendar, Trophy, Smartphone } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { PaymentModal } from '@/components/PaymentModal';
 
 const PricingSection = () => {
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<{name: string; price: string; currency: string} | null>(null);
+  const [selectedProvider, setSelectedProvider] = useState<'MTN' | 'Airtel' | null>(null);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const { toast } = useToast();
 
-  const handlePayment = (plan: string, amount: string, provider: 'MTN' | 'Airtel') => {
-    setSelectedPlan(plan);
-    toast({
-      title: "Payment Integration Required",
-      description: `To process ${provider} payments for ${plan} (${amount}), connect your Supabase backend with payment APIs.`,
-      duration: 5000,
-    });
+  const handlePayment = (planName: string, planPrice: string, planCurrency: string, provider: 'MTN' | 'Airtel') => {
+    setSelectedPlan({ name: planName, price: planPrice, currency: planCurrency });
+    setSelectedProvider(provider);
+    setIsPaymentModalOpen(true);
   };
 
   const plans = [
@@ -81,17 +81,17 @@ const PricingSection = () => {
     <section id="packages" className="py-20 bg-gradient-to-b from-background to-muted">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-slide-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="text-center mb-12 sm:mb-16 animate-slide-up px-4 sm:px-0">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Choose Your Perfect Plan
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Affordable internet packages designed for every need. Pay securely with MTN or Airtel Mobile Money.
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto px-4 sm:px-0">
           {plans.map((plan, index) => {
             const IconComponent = plan.icon;
             return (
@@ -117,8 +117,8 @@ const PricingSection = () => {
                   
                   <div className="mt-6">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-4xl md:text-5xl font-bold text-foreground">{plan.price}</span>
-                      <span className="text-xl text-muted-foreground ml-2">{plan.currency}</span>
+                      <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">{plan.price}</span>
+                      <span className="text-lg sm:text-xl text-muted-foreground ml-2">{plan.currency}</span>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2">for {plan.period}</p>
                   </div>
@@ -138,18 +138,16 @@ const PricingSection = () => {
                   {/* Payment Buttons */}
                   <div className="space-y-3">
                     <Button 
-                      onClick={() => handlePayment(plan.name, plan.price, 'MTN')}
+                      onClick={() => handlePayment(plan.name, plan.price, plan.currency, 'MTN')}
                       className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 shadow-button hover:shadow-hero"
-                      disabled={selectedPlan === plan.id}
                     >
                       <Smartphone className="w-4 h-4 mr-2" />
                       Pay with MTN
                     </Button>
                     
                     <Button 
-                      onClick={() => handlePayment(plan.name, plan.price, 'Airtel')}
+                      onClick={() => handlePayment(plan.name, plan.price, plan.currency, 'Airtel')}
                       className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 shadow-button hover:shadow-hero"
-                      disabled={selectedPlan === plan.id}
                     >
                       <Smartphone className="w-4 h-4 mr-2" />
                       Pay with Airtel
@@ -171,6 +169,13 @@ const PricingSection = () => {
             All plans include unlimited data usage • No hidden fees • Instant activation after payment
           </p>
         </div>
+
+        <PaymentModal
+          isOpen={isPaymentModalOpen}
+          onClose={() => setIsPaymentModalOpen(false)}
+          plan={selectedPlan}
+          provider={selectedProvider}
+        />
       </div>
     </section>
   );
