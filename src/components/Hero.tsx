@@ -33,7 +33,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto animate-fade-in">
           {/* Main Headline */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 leading-tight px-2 sm:px-0">
             Stay Connected with{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
               NTENJERU WIFI
@@ -41,60 +41,60 @@ const Hero = () => {
           </h1>
 
           {/* Subheading */}
-          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-blue-100 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
+          <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 text-blue-100 max-w-xl mx-auto leading-relaxed px-4 sm:px-2">
             Reliable Internet Anytime, Anywhere in Mukono. 
             Fast, affordable, and always available connectivity for work, study, and entertainment.
           </p>
 
           {/* Feature Highlights */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-8 sm:mb-10 px-4 sm:px-0">
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
-              <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-300" />
-              <span className="text-xs sm:text-sm font-medium">Lightning Fast</span>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-2 sm:px-0">
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 sm:py-2">
+              <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-300" />
+              <span className="text-xs font-medium">Lightning Fast</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
-              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
-              <span className="text-xs sm:text-sm font-medium">24/7 Available</span>
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 sm:py-2">
+              <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-green-300" />
+              <span className="text-xs font-medium">24/7 Available</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
-              <Wifi className="w-4 h-4 sm:w-5 sm:h-5 text-blue-300" />
-              <span className="text-xs sm:text-sm font-medium">Reliable Connection</span>
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 sm:py-2">
+              <Wifi className="w-3 h-3 sm:w-4 sm:h-4 text-blue-300" />
+              <span className="text-xs font-medium">Reliable Connection</span>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center px-4 sm:px-0 max-w-sm sm:max-w-none mx-auto">
             <Button 
               onClick={scrollToPackages}
-              size="lg" 
-              className="w-full sm:w-auto bg-white text-primary hover:bg-blue-50 font-semibold text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-hero transition-all duration-300 hover:shadow-2xl hover:transform hover:-translate-y-1"
+              size="default" 
+              className="w-full sm:w-auto bg-white text-primary hover:bg-blue-50 font-semibold text-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-hero transition-all duration-300 hover:shadow-2xl hover:transform hover:-translate-y-1"
             >
               Get Started
-              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
             </Button>
             <Button 
               onClick={scrollToPackages}
               variant="outline" 
-              size="lg"
-              className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-primary font-semibold text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300"
+              size="default"
+              className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-primary font-semibold text-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300"
             >
               View Packages
             </Button>
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto px-4 sm:px-0">
+          <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto px-4 sm:px-0">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">99.9%</div>
-              <div className="text-blue-200 text-xs sm:text-sm">Uptime Guarantee</div>
+              <div className="text-lg sm:text-2xl font-bold text-white mb-1">99.9%</div>
+              <div className="text-blue-200 text-xs">Uptime Guarantee</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">1000+</div>
-              <div className="text-blue-200 text-xs sm:text-sm">Happy Customers</div>
+              <div className="text-lg sm:text-2xl font-bold text-white mb-1">1000+</div>
+              <div className="text-blue-200 text-xs">Happy Customers</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">24/7</div>
-              <div className="text-blue-200 text-xs sm:text-sm">Technical Support</div>
+              <div className="text-lg sm:text-2xl font-bold text-white mb-1">24/7</div>
+              <div className="text-blue-200 text-xs">Technical Support</div>
             </div>
           </div>
         </div>

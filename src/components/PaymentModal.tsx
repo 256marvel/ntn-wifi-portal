@@ -119,10 +119,13 @@ export const PaymentModal = ({ isOpen, onClose, plan, provider }: PaymentModalPr
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Smartphone className="w-5 h-5" />
-            Pay with {provider} Mobile Money
+          <DialogTitle className="flex items-center gap-2 text-lg font-bold">
+            <Smartphone className="w-5 h-5 text-primary" />
+            Ntenjeru WiFi
           </DialogTitle>
+          <p className="text-sm text-muted-foreground mt-2">
+            Pay with {provider} Mobile Money
+          </p>
         </DialogHeader>
 
         <div className="space-y-4">

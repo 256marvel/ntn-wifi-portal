@@ -81,80 +81,86 @@ const PricingSection = () => {
     <section id="packages" className="py-20 bg-gradient-to-b from-background to-muted">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16 animate-slide-up px-4 sm:px-0">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
+        <div className="text-center mb-8 sm:mb-12 animate-slide-up px-4 sm:px-0">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2 sm:mb-3">
             Choose Your Perfect Plan
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
             Affordable internet packages designed for every need. Pay securely with MTN or Airtel Mobile Money.
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto px-4 sm:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto px-2 sm:px-4">
           {plans.map((plan, index) => {
             const IconComponent = plan.icon;
             return (
               <Card 
                 key={plan.id} 
-                className={`pricing-card relative ${plan.popular ? 'border-primary ring-2 ring-primary/20' : 'border-border'} animate-slide-up`}
+                className={`pricing-card relative ${plan.popular ? 'border-primary ring-2 ring-primary/20' : 'border-border'} animate-slide-up overflow-visible`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-primary text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                    <span className="bg-gradient-to-r from-primary to-primary-dark text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap">
                       Most Popular
                     </span>
                   </div>
                 )}
 
-                <CardHeader className="text-center pb-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="w-8 h-8 text-primary" />
+                <CardHeader className="text-center pb-4 sm:pb-6 pt-6">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-foreground">{plan.name}</CardTitle>
-                  <CardDescription className="text-muted-foreground">Perfect for {plan.period} usage</CardDescription>
+                  <CardTitle className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">{plan.name}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">Perfect for {plan.period} usage</CardDescription>
                   
-                  <div className="mt-6">
+                  <div className="mt-4 sm:mt-6">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">{plan.price}</span>
-                      <span className="text-lg sm:text-xl text-muted-foreground ml-2">{plan.currency}</span>
+                      <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">{plan.price}</span>
+                      <span className="text-base sm:text-lg text-muted-foreground ml-2">{plan.currency}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-2">for {plan.period}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">for {plan.period}</p>
                   </div>
                 </CardHeader>
 
-                <CardContent>
+                <CardContent className="px-4 sm:px-6">
                   {/* Features List */}
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-2 mb-6">
                     {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm">
-                        <Check className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
+                      <li key={featureIndex} className="flex items-center text-xs sm:text-sm">
+                        <Check className="w-3 h-3 sm:w-4 sm:h-4 text-primary mr-2 sm:mr-3 flex-shrink-0" />
                         <span className="text-muted-foreground">{feature}</span>
                       </li>
                     ))}
                   </ul>
 
                   {/* Payment Buttons */}
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     <Button 
-                      onClick={() => handlePayment(plan.name, plan.price, plan.currency, 'MTN')}
-                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 shadow-button hover:shadow-hero"
+                      onClick={() => {
+                        console.log('MTN Button clicked', plan.name, plan.price, plan.currency);
+                        handlePayment(plan.name, plan.price, plan.currency, 'MTN');
+                      }}
+                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold py-2 sm:py-3 text-sm rounded-lg transition-all duration-300 shadow-button hover:shadow-hero"
                     >
-                      <Smartphone className="w-4 h-4 mr-2" />
+                      <Smartphone className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                       Pay with MTN
                     </Button>
                     
                     <Button 
-                      onClick={() => handlePayment(plan.name, plan.price, plan.currency, 'Airtel')}
-                      className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 shadow-button hover:shadow-hero"
+                      onClick={() => {
+                        console.log('Airtel Button clicked', plan.name, plan.price, plan.currency);
+                        handlePayment(plan.name, plan.price, plan.currency, 'Airtel');
+                      }}
+                      className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-2 sm:py-3 text-sm rounded-lg transition-all duration-300 shadow-button hover:shadow-hero"
                     >
-                      <Smartphone className="w-4 h-4 mr-2" />
+                      <Smartphone className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                       Pay with Airtel
                     </Button>
                   </div>
 
-                  <p className="text-xs text-muted-foreground text-center mt-4">
+                  <p className="text-xs text-muted-foreground text-center mt-3 sm:mt-4">
                     Secure mobile money payment
                   </p>
                 </CardContent>
