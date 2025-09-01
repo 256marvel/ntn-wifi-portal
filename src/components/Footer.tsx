@@ -98,7 +98,7 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
                   <p className="font-medium">+256 763 643724</p>
-                  <p className="text-sm text-gray-300">Call or WhatsApp</p>
+                  <p className="text-sm text-gray-300">Call us anytime</p>
                 </div>
               </div>
               
@@ -107,19 +107,6 @@ const Footer = () => {
                 <div>
                   <p className="font-medium">Ntenjeru, Mukono</p>
                   <p className="text-sm text-gray-300">Uganda, East Africa</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <MessageCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                <div>
-                  <button 
-                    onClick={() => window.open('https://wa.me/256763643724')}
-                    className="font-medium hover:text-primary transition-colors"
-                  >
-                    WhatsApp Support
-                  </button>
-                  <p className="text-sm text-gray-300">24/7 Available</p>
                 </div>
               </div>
             </div>
@@ -143,16 +130,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* WhatsApp Floating Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <button
-          onClick={() => window.open('https://wa.me/256763643724')}
-          className="w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-hero transition-all duration-300 hover:scale-110"
-          aria-label="Chat on WhatsApp"
-        >
-          <MessageCircle className="w-7 h-7 text-white" />
-        </button>
-      </div>
     </footer>
   );
 };
