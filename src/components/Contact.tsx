@@ -35,19 +35,11 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Phone & WhatsApp',
+      title: 'Call Now',
       value: '+256 763 643724',
-      description: 'Call or text us anytime',
+      description: 'Call us anytime for support',
       action: () => window.open('tel:+256763643724'),
       color: 'from-green-500 to-green-600'
-    },
-    {
-      icon: MessageCircle,
-      title: 'WhatsApp Chat',
-      value: 'Chat with Us',
-      description: 'Get instant support',
-      action: () => window.open('https://wa.me/256763643724'),
-      color: 'from-blue-500 to-blue-600'
     },
     {
       icon: MapPin,
@@ -191,22 +183,22 @@ const Contact = () => {
               })}
             </div>
 
-            {/* WhatsApp CTA */}
+            {/* Call CTA */}
             <div className="mt-8">
-              <Card className="bg-gradient-to-r from-green-500 to-green-600 text-white shadow-hero">
+              <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-hero">
                 <CardContent className="p-6 text-center">
-                  <MessageCircle className="w-12 h-12 mx-auto mb-4" />
+                  <Phone className="w-12 h-12 mx-auto mb-4" />
                   <h3 className="text-xl font-bold mb-2">Need Instant Help?</h3>
                   <p className="mb-4 opacity-90">
-                    Chat with us on WhatsApp for immediate assistance with your internet connection.
+                    Call us directly for immediate assistance with your internet connection.
                   </p>
                   <Button 
-                    onClick={() => window.open('https://wa.me/256763643724')}
+                    onClick={() => window.open('tel:+256763643724')}
                     variant="secondary"
-                    className="bg-white text-green-600 hover:bg-gray-100 font-semibold"
+                    className="bg-white text-blue-600 hover:bg-gray-100 font-semibold"
                   >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Chat on WhatsApp
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call Now
                   </Button>
                 </CardContent>
               </Card>

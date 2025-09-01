@@ -29,8 +29,11 @@ export const processPayment = async (paymentData: PaymentRequest): Promise<Payme
       normalizedPhone = '256' + normalizedPhone;
     }
 
-    // Determine the correct endpoint based on provider
-    const endpoint = paymentData.provider === 'MTN' ? '/momo_request.php' : '/airtel_request.php';
+    // Determine the correct endpoint based on provider - use WordPress-compatible URLs
+    const baseUrl = window.location.origin;
+    const endpoint = paymentData.provider === 'MTN' ? 
+      `${baseUrl}/wp-content/themes/ntenjeru-wifi/momo_request.php` : 
+      `${baseUrl}/wp-content/themes/ntenjeru-wifi/airtel_request.php`;
     
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -73,7 +76,8 @@ export const processPayment = async (paymentData: PaymentRequest): Promise<Payme
 
 export const checkPaymentStatus = async (referenceId: string): Promise<PaymentResponse> => {
   try {
-    const response = await fetch('/check_payment_status.php', {
+    const baseUrl = window.location.origin;
+    const response = await fetch(`${baseUrl}/wp-content/themes/ntenjeru-wifi/check_payment_status.php`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
